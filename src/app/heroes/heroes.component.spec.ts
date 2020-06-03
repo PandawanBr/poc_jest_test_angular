@@ -43,8 +43,6 @@ describe('HeroesComponent', () => {
       expect(heroes.length).toBe(10);
 
       const hero = heroes.find(hero => hero.id === 20);
-      console.log('heroes mock', HEROES);
-      console.log('heroes request', heroes);
       expect(hero.name).toBe('Tornado');
     })
 
@@ -55,13 +53,16 @@ describe('HeroesComponent', () => {
     req.flush(HEROES);
   });
 
-  it('should add a hero', () => {
+  it('should add a hero', async () => {
     const heroesList: Array<Hero> = HEROES;
-    heroService.addHero({ name: 'Batman' } as Hero).subscribe(item => {
+    const postBody = { name: 'Batman' };
+    heroService.addHero(postBody as Hero).subscribe(item => {
       heroesList.push(item);
-      expect(heroesList).toBeTruthy();
       const hero = heroesList.find(hero => hero.name === 'Batman');
-      expect(hero.name).toBe('Batman');
+      expect(hero.name).toEqual('Batman');
     });
+    const req = httpTestingController.expectOne('api/heroes');
+    expect(req.request.method).toEqual('POST');
+    req.flush(postBody);
   });
 });
