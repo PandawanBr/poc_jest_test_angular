@@ -44,7 +44,7 @@ describe('HeroesComponent', () => {
 
       const hero = heroes.find(hero => hero.id === 20);
       expect(hero.name).toBe('Tornado');
-    })
+    });
     const req = httpTestingController.expectOne('api/heroes');
     expect(req.request.method).toEqual('GET');
     req.flush(HEROES);
