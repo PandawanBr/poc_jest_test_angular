@@ -1,0 +1,61 @@
+{
+  "name": "angular-io-example",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Example project from an angular.io guide.",
+  "scripts": {
+    "ng": "ng",
+    "build": "ng build",
+    "start": "ng serve",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "lint": "tslint ./src/**/*.ts -t verbose",
+    "e2e": "ng e2e"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@angular/animations": "~9.1.4",
+    "@angular/common": "~9.1.4",
+    "@angular/compiler": "~9.1.4",
+    "@angular/core": "~9.1.4",
+    "@angular/forms": "~9.1.4",
+    "@angular/platform-browser": "~9.1.4",
+    "@angular/platform-browser-dynamic": "~9.1.4",
+    "@angular/router": "~9.1.4",
+    "@angular/upgrade": "~9.1.4",
+    "angular-in-memory-web-api": "~0.11.0",
+    "rxjs": "~6.5.4",
+    "zone.js": "~0.10.3"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.901.4",
+    "@angular/cli": "~9.1.4",
+    "@angular/compiler-cli": "~9.1.4",
+    "@types/jest": "^25.2.3",
+    "@types/node": "^12.11.1",
+    "jest": "^25.5.1",
+    "jest-preset-angular": "^8.2.0",
+    "lodash": "^4.16.2",
+    "ts-node": "~8.3.0",
+    "tslint": "~6.1.0",
+    "typescript": "~3.8.3"
+  },
+  "jest": {
+    "preset": "jest-preset-angular",
+    "setupFilesAfterEnv": [
+      "<rootDir>/setupJest.ts"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/",
+      "<rootDir>/dist/",
+      "<rootDir>/src/test.ts"
+    ],
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "<rootDir>/tsconfig.spec.json"
+      }
+    }
+  }
+}
