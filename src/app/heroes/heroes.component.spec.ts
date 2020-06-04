@@ -53,8 +53,7 @@ describe('HeroesComponent', () => {
   it('should add a hero', () => {
     const responseBody = { id: 21, name: 'Batman' };
     heroService.addHero({ name: 'Batman' } as Hero).subscribe(item => {
-      console.log('item', item);
-      expect(item.id).toEqual(131212131);
+      expect(item.id).toEqual(21);
     });
     const req = httpTestingController.expectOne('api/heroes');
     expect(req.request.method).toEqual('POST');
