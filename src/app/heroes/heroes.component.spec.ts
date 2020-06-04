@@ -1,10 +1,10 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from "@angular/router/testing";
-import { HeroService } from '../hero.service';
-import { HeroesComponent } from './heroes.component';
-import { HEROES } from '../mock-heroes';
 import { Hero } from '../hero';
+import { HeroService } from '../hero.service';
+import { HEROES } from '../mock-heroes';
+import { HeroesComponent } from './heroes.component';
 
 describe('HeroesComponent', () => {
   let heroService: HeroService;
@@ -50,16 +50,15 @@ describe('HeroesComponent', () => {
     req.flush(HEROES);
   });
 
-  it('should add a hero', async () => {
-    const heroesList: Array<Hero> = HEROES;
-    const postBody = { name: 'Batman' };
-    heroService.addHero(postBody as Hero).subscribe(item => {
-      heroesList.push(item);
-      const hero = heroesList.find(hero => hero.name === 'Batman');
-      expect(hero.name).toEqual('Batman');
+  it('should add a hero', () => {
+    const responseBody = { id: 21, name: 'Batman' };
+    heroService.addHero({ name: 'Batman' } as Hero).subscribe(item => {
+      console.log('item', item);
+      expect(item.id).toEqual(131212131);
     });
     const req = httpTestingController.expectOne('api/heroes');
     expect(req.request.method).toEqual('POST');
-    req.flush(postBody);
+    expect(req.request.body.name).toEqual(responseBody.name);
+    req.flush(responseBody);
   });
 });
